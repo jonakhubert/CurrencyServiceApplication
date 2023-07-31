@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDateTime;
 
 @Repository
-public class CurrencyRepository implements ICurrencyRepository{
+public class CurrencyRepository implements ICurrencyRepository {
 
     private final RestTemplate restTemplate;
 
@@ -20,6 +20,7 @@ public class CurrencyRepository implements ICurrencyRepository{
         this.restTemplate = restTemplate;
     }
 
+    @Override
     public CurrencyHistory getCurrentCurrencyValue(CurrencyRequest currencyRequest) {
         String url = "http://api.nbp.pl/api/exchangerates/tables/A?format=json";
         NbpApiResponse[] response = restTemplate.getForObject(url, NbpApiResponse[].class);
