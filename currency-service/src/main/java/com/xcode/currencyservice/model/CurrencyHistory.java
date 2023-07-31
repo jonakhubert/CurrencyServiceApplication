@@ -1,6 +1,7 @@
 package com.xcode.currencyservice.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
