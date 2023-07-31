@@ -1,23 +1,25 @@
 package com.xcode.currencyservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "requests")
-public class CurrencyHistory {
+public class UserEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore // TODO: maybe UserEntryDTO?
     private Long id;
     private String currency;
     private String name;
     private LocalDateTime date;
     private double value;
 
-    public CurrencyHistory() {}
+    public UserEntry() {}
 
-    public CurrencyHistory(String currency, String name, LocalDateTime date, double value) {
+    public UserEntry(String currency, String name, LocalDateTime date, double value) {
         this.currency = currency;
         this.name = name;
         this.date = date;
