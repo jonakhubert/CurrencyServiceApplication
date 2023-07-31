@@ -1,10 +1,14 @@
 package com.xcode.currencyservice.service;
 
+import com.xcode.currencyservice.model.UserEntry;
 import com.xcode.currencyservice.model.CurrencyRequest;
+import com.xcode.currencyservice.model.CurrencyResponse;
 import com.xcode.currencyservice.repository.CurrencyRepository;
 import com.xcode.currencyservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CurrencyService {
@@ -18,7 +22,13 @@ public class CurrencyService {
         this.userRepository = userRepository;
     }
 
-    public Double getCurrentCurrencyValue(CurrencyRequest currencyRequest) {
-        return currencyRepository.getCurrentCurrencyValue(currencyRequest).getValue();
+    public CurrencyResponse getCurrentCurrencyValue(CurrencyRequest currencyRequest) {
+        UserEntry currencyHistory = currencyRepository.getCurrentCurrencyValue(currencyRequest);
+        userRepository.save(currencyHistory);
+        return new CurrencyResponse(currencyHistory.getValue());
+    }
+
+    public List<UserEntry> getAllEntries() {
+        return userRepository.findAll();
     }
 }
