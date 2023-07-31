@@ -1,6 +1,6 @@
 package com.xcode.currencyservice.repository;
 
-import com.xcode.currencyservice.model.CurrencyHistory;
+import com.xcode.currencyservice.model.UserEntry;
 import com.xcode.currencyservice.model.CurrencyRequest;
 import com.xcode.currencyservice.model.NbpApiResponse;
 import com.xcode.currencyservice.model.NbpCurrencyRate;
@@ -21,7 +21,7 @@ public class CurrencyRepository implements ICurrencyRepository {
     }
 
     @Override
-    public CurrencyHistory getCurrentCurrencyValue(CurrencyRequest currencyRequest) {
+    public UserEntry getCurrentCurrencyValue(CurrencyRequest currencyRequest) {
         String url = "http://api.nbp.pl/api/exchangerates/tables/A?format=json";
         NbpApiResponse[] response = restTemplate.getForObject(url, NbpApiResponse[].class);
 
@@ -29,7 +29,7 @@ public class CurrencyRepository implements ICurrencyRepository {
         if(response != null) {
             for(NbpCurrencyRate rate : response[0].rates()) {
                 if(rate.code().equals(currencyRequest.currency())) {
-                    return new CurrencyHistory(
+                    return new UserEntry(
                             currencyRequest.currency(),
                             currencyRequest.name(),
                             LocalDateTime.now(),
