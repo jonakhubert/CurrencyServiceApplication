@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class CurrencyRepositoryTest {
 
     @Mock
-    private ICurrencyRepository currencyRepository;
+    private ICurrencyRepository underTest;
 
     @Test
     public void testGetCurrentCurrencyValue_WhenCurrencyExist() {
@@ -31,11 +31,11 @@ public class CurrencyRepositoryTest {
         CurrencyRequest currencyRequest = new CurrencyRequest(currency, name);
         UserEntry expected = new UserEntry(currency, name, date, value);
 
-        when(currencyRepository.getCurrentCurrencyValue(currencyRequest)).thenReturn(expected);
+        when(underTest.getCurrentCurrencyValue(currencyRequest)).thenReturn(expected);
 
         // act
 
-        UserEntry result = currencyRepository.getCurrentCurrencyValue(currencyRequest);
+        UserEntry result = underTest.getCurrentCurrencyValue(currencyRequest);
 
         // assert
 
@@ -51,11 +51,11 @@ public class CurrencyRepositoryTest {
 
         CurrencyRequest currencyRequest = new CurrencyRequest(currency, name);
 
-        when(currencyRepository.getCurrentCurrencyValue(currencyRequest)).thenReturn(null);
+        when(underTest.getCurrentCurrencyValue(currencyRequest)).thenReturn(null);
 
         // act
 
-        UserEntry result = currencyRepository.getCurrentCurrencyValue(currencyRequest);
+        UserEntry result = underTest.getCurrentCurrencyValue(currencyRequest);
 
         // assert
 
