@@ -25,7 +25,6 @@ public class CurrencyController {
 
     @PostMapping(value = "/get-current-currency-value-command", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CurrencyResponse> getCurrentCurrencyValue(@Valid @RequestBody CurrencyRequest currencyRequest) {
-        System.out.println(currencyRequest);
         return ResponseEntity.ok(currencyService.getCurrentCurrencyValue(currencyRequest));
     }
 
