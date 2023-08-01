@@ -1,3 +1,7 @@
 package com.xcode.currencyservice.model;
 
-public record CurrencyRequest(String currency, String name) {}
+import jakarta.validation.constraints.NotNull;
+
+public record CurrencyRequest(
+        @NotNull String currency,
+        @NotNull String name) {}
