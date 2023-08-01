@@ -25,11 +25,13 @@ public class CurrencyRepository implements ICurrencyRepository {
         String url = "http://api.nbp.pl/api/exchangerates/tables/A?format=json";
         NbpApiResponse[] response = restTemplate.getForObject(url, NbpApiResponse[].class);
 
+        String currency = currencyRequest.currency().toUpperCase();
+
         if(response != null) {
             for(NbpCurrencyRate rate : response[0].rates()) {
-                if(rate.code().equals(currencyRequest.currency())) {
+                if(rate.code().equals(currency)) {
                     return new UserEntry(
-                            currencyRequest.currency(),
+                            currency,
                             currencyRequest.name(),
                             LocalDateTime.now(),
                             rate.mid()
