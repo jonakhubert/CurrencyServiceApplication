@@ -1,6 +1,5 @@
 package com.xcode.currencyservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
 public class UserEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore // TODO: maybe UserEntryDTO?
     private Long id;
     private String currency;
     private String name;
