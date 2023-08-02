@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/variables";
+
+body {
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.navbar {
+    padding: 10px;
+    background-color: #32302f;
+}
+
+.navbar-brand, .navbar-brand:hover { 
+    color: white;
+}
