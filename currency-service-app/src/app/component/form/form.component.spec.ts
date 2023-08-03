@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponent } from './form.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CurrencyService } from 'src/app/service/currency.service';
 import { of, throwError } from 'rxjs';
 import { ApiError } from 'src/app/interface/api-error';
