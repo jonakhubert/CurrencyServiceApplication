@@ -4,6 +4,7 @@ import { CurrencyRequest } from '../interface/currency-request';
 import { Observable, catchError, throwError } from 'rxjs';
 import { CurrencyResponse } from '../interface/currency-response';
 import { UserEntry } from '../interface/user-entry';
+import { ApiError } from '../interface/api-error';
 
 @Injectable({ providedIn: 'root' })
 
@@ -16,19 +17,29 @@ export class CurrencyService {
   public getCurrentCurrencyValue(request: CurrencyRequest): Observable<CurrencyResponse> {
     return this.http.post<CurrencyResponse>(`${this.apiUrl}/get-current-currency-value-command`, request)
       .pipe(
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => {
+          return throwError(this.buildApiError(error));
+        })
       );
   }
 
   public getUserEntries(): Observable<UserEntry[]> {
     return this.http.get<UserEntry[]>(`${this.apiUrl}/requests`)
       .pipe(
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => {
+          return throwError(this.buildApiError(error));
+        })
       );
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    console.log(error);
-    return throwError(`An error occured - Error code: ${error.status}`);
+  private buildApiError(error: HttpErrorResponse) {
+    const apiError: ApiError = {
+      path: error.error.path,
+      message: error.error.message,
+      statusCode: error.error.statusCode,
+      time: error.error.time
+    };
+
+    return apiError;
   }
 }

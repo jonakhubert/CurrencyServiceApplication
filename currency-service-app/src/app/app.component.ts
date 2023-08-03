@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CurrencyService } from './service/currency.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import { CurrencyService } from './service/currency.service';
 })
 export class AppComponent {
   title = 'currency-service-app';
-
-  constructor(private currencyService: CurrencyService) {}
 }

@@ -1,6 +1,6 @@
 export interface UserEntry {
     currency: string;
     name: string;
-    date: Date;
+    date: string;
     value: number;
 }
