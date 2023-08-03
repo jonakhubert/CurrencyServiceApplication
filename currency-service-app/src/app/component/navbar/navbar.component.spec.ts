@@ -21,7 +21,7 @@ describe('NavbarComponent', () => {
 
   it('should display the application name', () => {
     const nameElement: HTMLElement = fixture.nativeElement.querySelector(".navbar-brand");
-    expect(nameElement.textContent).toContain('RecruitmentTask-xCode');
+    expect(nameElement.textContent).toContain('Currency Service Application');
   });
 
   it('should contain display data button', () => {
