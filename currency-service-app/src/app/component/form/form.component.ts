@@ -37,7 +37,6 @@ export class FormComponent implements OnInit {
         this.message = `${request.currency.toUpperCase()}: ${this.currencyValue}`;
       },
       (error: ApiError) => {
-        console.error('Error:', error);
         if (error.statusCode === 404) {
           this.message = `${error.message}`;
         } else {
