@@ -1,1 +1,23 @@
-<p>display-data works!</p>
+<div class="wrapper">
+  <h1>All user requests</h1>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Currency</th>
+        <th>Value</th>
+      </tr>
+
+      <tbody>
+        <tr *ngFor="let userEntry of userEntries">
+          <td>{{ userEntry.name }}</td>
+          <td>{{ userEntry.date }}</td>
+          <td>{{ userEntry.currency }}</td>
+          <td>{{ userEntry.value }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
