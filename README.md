@@ -49,7 +49,7 @@ This project is a full-stack web application that allows users to retrieve the c
 3. The result will be displayed on the screen.
 4. To view the history of previous currency requests, click the **Display data** button. The list of past requests will be displayed.
 
-## API Reference
+## API Endpoints
 
 ### Get current currency value and save your request
 
