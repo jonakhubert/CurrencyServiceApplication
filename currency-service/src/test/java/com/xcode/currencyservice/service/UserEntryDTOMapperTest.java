@@ -24,7 +24,7 @@ public class UserEntryDTOMapperTest {
 
         String currency = "EUR";
         String name = "Jan Kowalski";
-        LocalDateTime date = LocalDateTime.of(2023, 8, 1, 12, 0); // Replace with your desired date
+        LocalDateTime date = LocalDateTime.of(2023, 8, 1, 12, 0);
         double value = 4.41;
 
         UserEntry userEntry = new UserEntry(currency, name, date, value);
